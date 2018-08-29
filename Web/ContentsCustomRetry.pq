@@ -1,9 +1,17 @@
-//This is an example of how one can use custom handling of a web response based on the request's response status.
-//author: Curt Hagenlocher
-//https://gist.github.com/CurtHagenlocher/68ac18caa0a17667c805
+/*
+  This is an example of how one can use custom handling of a web response based on the request's response status.
+
+  Require: Value.WaitFor
+
+  Usage:
+  Web.ContentsCustomRetry = Load("Web/ContentsCustomRetry"),
+  Web.ContentsCustomRetry("http://api.worldbank.org/v2/countries?region=ECS&format=json")
+
+  Result: 'curl "http://api.worldbank.org/v2/countries?region=ECS&format=json" -v'
+*/
 
 (url as text, optional options as record) => let
-	Value.WaitFor = Load("Value.WaitFor")
+	Value.WaitFor = Load("Value/WaitFor")
 in
 
 Value.WaitFor(
